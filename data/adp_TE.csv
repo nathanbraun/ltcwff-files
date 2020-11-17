@@ -1,0 +1,18 @@
+adp,adp_formatted,bye,high,low,name,player_id,position,stdev,team,times_drafted
+18.1,2.06,10,9,29,Rob Gronkowski,1740,TE,3.3,NE,198
+38.9,4.03,12,25,59,Travis Kelce,1989,TE,5.3,KC,209
+51.5,5.03,7,36,69,Greg Olsen,890,TE,5.6,CAR,198
+54.1,5.06,10,39,69,Jordan Reed,1995,TE,5.8,WAS,180
+57.6,5.1,11,44,72,Jimmy Graham,1747,TE,5.1,SEA,168
+70.4,6.1,9,50,99,Tyler Eifert,1974,TE,7.6,CIN,144
+72.8,7.01,10,52,95,Zach Ertz,1978,TE,7.8,PHI,148
+79.9,7.08,11,58,117,Delanie Walker,1201,TE,9.8,TEN,138
+83.6,7.12,12,64,118,Kyle Rudolph,1799,TE,8.4,MIN,152
+87.6,8.04,10,55,125,Martellus Bennett,1364,TE,12.2,NE,125
+106.1,9.1,12,71,142,Hunter Henry,2354,TE,13.5,LAC,169
+124.0,11.04,5,90,161,Eric Ebron,2112,TE,15.4,DET,162
+132.6,12.01,6,83,170,Jack Doyle,2430,TE,19.7,IND,223
+146.6,13.03,9,101,175,Austin Hooper,2361,TE,17.5,ATL,167
+150.5,13.07,8,95,180,Jason Witten,1286,TE,21.3,DAL,118
+152.3,13.08,9,102,180,Coby Fleener,1923,TE,19.0,NO,74
+152.7,13.09,7,97,180,O.J. Howard,2446,TE,21.2,TB,58

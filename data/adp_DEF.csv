@@ -1,0 +1,14 @@
+adp,adp_formatted,bye,high,low,name,player_id,position,stdev,team,times_drafted
+105.5,9.1,10,80,122,Denver Defense,1309,DEF,9.8,DEN,87
+110.3,10.02,11,88,123,Seattle Defense,1327,DEF,8.5,SEA,78
+119.4,10.11,10,101,132,Houston Defense,1312,DEF,6.8,HOU,88
+123.9,11.04,12,104,141,Kansas City Defense,1315,DEF,7.5,KC,76
+128.0,11.08,10,118,139,New England Defense,1318,DEF,5.7,NE,52
+135.3,12.03,12,119,168,Arizona Defense,1250,DEF,8.5,ARI,78
+138.1,12.06,12,110,164,Minnesota Defense,1317,DEF,10.6,MIN,62
+138.5,12.07,11,106,160,NY Giants Defense,1320,DEF,12.2,NYG,46
+150.8,13.07,7,127,179,Pittsburgh Defense,1324,DEF,12.3,PIT,57
+161.5,14.05,7,131,180,Carolina Defense,1304,DEF,11.6,CAR,105
+161.6,14.06,10,133,180,Philadelphia Defense,1323,DEF,10.8,PHI,78
+164.9,14.09,8,134,180,Baltimore Defense,1332,DEF,11.5,BAL,65
+168.2,14.12,9,144,180,Atlanta Defense,1334,DEF,9.2,ATL,68

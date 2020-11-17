@@ -1,0 +1,33 @@
+city,team,conference,division,mascot
+Arizona,ARI,NFC,West,Cardinals
+Atlanta,ATL,NFC,South,Falcons
+Baltimore,BAL,AFC,North,Ravens
+Buffalo,BUF,AFC,East,Bills
+Carolina,CAR,NFC,South,Panthers
+Chicago,CHI,NFC,North,Bears
+Cincinnati,CIN,AFC,North,Bengals
+Cleveland,CLE,AFC,North,Browns
+Dallas,DAL,NFC,East,Cowboys
+Denver,DEN,AFC,West,Broncos
+Detroit,DET,NFC,North,Lions
+Green Bay,GB,NFC,North,Packers
+Houston,HOU,AFC,South,Texans
+Indianapolis,IND,AFC,South,Colts
+Jacksonville,JAX,AFC,South,Jaguars
+Kansas City,KC,AFC,West,Chiefs
+Miami,MIA,AFC,East,Dolphins
+Minnesota,MIN,NFC,North,Vikings
+New England,NE,AFC,East,Patriots
+New Orleans,NO,NFC,South,Saints
+NY,NYG,NFC,East,Giants
+NY,NYJ,AFC,East,Jets
+Oakland,OAK,AFC,West,Raiders
+Philadelphia,PHI,NFC,East,Eagles
+Pittsburgh,PIT,AFC,North,Steelers
+Los Angeles,LAC,AFC,West,Chargers
+San Francisco,SF,NFC,West,49ers
+Seattle,SEA,NFC,West,Seahawks
+Los Angeles,LA,NFC,West,Rams
+Tampa Bay,TB,NFC,South,Buccaneers
+Tennessee,TEN,AFC,South,Titans
+Washington,WAS,NFC,East,Redskins

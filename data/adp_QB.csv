@@ -1,0 +1,22 @@
+adp,adp_formatted,bye,high,low,name,player_id,position,stdev,team,times_drafted
+23.4,2.11,11,7,40,Aaron Rodgers,1004,QB,6.1,GB,200
+29.6,3.06,10,14,43,Tom Brady,119,QB,5.8,NE,193
+41.7,4.06,9,19,59,Drew Brees,127,QB,8.7,NO,170
+56.4,5.08,9,36,77,Matt Ryan,1342,QB,7.8,ATL,110
+64.3,6.04,11,44,86,Russell Wilson,1904,QB,7.5,SEA,111
+74.2,7.02,6,53,93,Derek Carr,2118,QB,7.9,OAK,128
+76.8,7.05,11,58,95,Marcus Mariota,2276,QB,6.9,TEN,149
+82.4,7.1,7,61,106,Jameis Winston,2275,QB,8.0,TB,137
+86.3,8.02,10,63,111,Kirk Cousins,1902,QB,8.7,WAS,161
+89.9,8.06,7,66,112,Cam Newton,1794,QB,9.2,CAR,169
+100.3,9.04,6,74,120,Andrew Luck,1897,QB,9.8,IND,166
+101.0,9.05,7,72,125,Ben Roethlisberger,1006,QB,11.0,PIT,168
+108.7,10.01,12,84,126,Philip Rivers,995,QB,9.2,LAC,192
+112.8,10.05,8,87,131,Dak Prescott,2377,QB,9.8,DAL,156
+116.5,10.08,5,91,148,Matthew Stafford,1664,QB,9.5,DET,187
+126.5,11.07,9,108,144,Andy Dalton,1802,QB,7.7,CIN,128
+132.3,11.12,10,106,149,Carson Wentz,2352,QB,9.8,PHI,86
+137.1,12.05,11,110,161,Eli Manning,749,QB,10.4,NYG,77
+142.3,12.1,12,114,173,Carson Palmer,900,QB,10.6,ARI,118
+155.9,13.12,5,136,176,Jay Cutler,265,QB,10.4,MIA,55
+162.4,14.06,6,134,180,Tyrod Taylor,1880,QB,12.8,BUF,52

@@ -1,5 +1,5 @@
 # README
-These are the files for my the book [Learn to Code with Fantasy
+These are the files for the book [Learn to Code with Fantasy
 Football](https://fantasycoding.com).
 
 If you're not familiar with Git or GitHub, no problem. Just click on the green

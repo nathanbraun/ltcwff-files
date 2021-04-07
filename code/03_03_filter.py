@@ -6,10 +6,11 @@ from os import path
 # stored
 # on Windows it might be something like 'C:/mydir'
 
-DATA_DIR = '/Users/nathanbraun/fantasymath/fantasybook/data'
+DATA_DIR = '/Users/nathan/fantasybook/data'
 
-adp = pd.read_csv(path.join(DATA_DIR, 'adp_2017.csv'))
-adp.set_index('player_id', inplace=True)
+# note: we're passing the index_col argument, which immediately setting the
+# index to be the player_id column
+adp = pd.read_csv(path.join(DATA_DIR, 'adp_2017.csv'), index_col='player_id')
 
 # Filtering
 
@@ -19,10 +20,10 @@ adp.loc[tom_brady_id]
 my_player_ids = ([119, 1886, 925])
 
 adp.loc[my_player_ids]
-adp.loc[my_player_ids, ['name', 'adp', 'stdev']
+adp.loc[my_player_ids, ['name', 'adp', 'stdev']]
 adp.loc[my_player_ids, 'name']
 
-# Boolean indexing
+# Boolean Indexing
 is_a_rb = adp['position'] == 'RB'
 
 is_a_rb.head()
@@ -30,9 +31,9 @@ is_a_rb.head()
 adp_rbs = adp.loc[is_a_rb]
 
 adp_rbs[['name', 'adp', 'position']].head()
-adp_df_wrs = adp.loc[adp['position'] == 'WR']
+adp_wrs = adp.loc[adp['position'] == 'WR']
 
-adp_df_wrs[['name', 'adp', 'position']].head()
+adp_wrs[['name', 'adp', 'position']].head()
 
 is_a_te = adp['position'] == 'TE'
 
@@ -41,9 +42,7 @@ adp_not_te = adp.loc[~is_a_te]
 adp_not_te[['name', 'adp', 'position']].head()
 
 # Duplicates
-adp.shape
 adp.drop_duplicates(inplace=True)
-adp.shape
 
 adp.drop_duplicates('position')[['name', 'adp', 'position']]
 

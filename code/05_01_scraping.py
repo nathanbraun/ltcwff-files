@@ -1,66 +1,63 @@
 from bs4 import BeautifulSoup as Soup
-import requests
-from pandas import DataFrame
 
-ffc_response = requests.get('https://fantasyfootballcalculator.com/adp/ppr/12-team/all/2017')
+table_html = """
+<html>
+  <table>
+    <tr>
+     <th>Name</th>
+     <th>Pos</th>
+     <th>Week</th>
+     <th>Pts</th>
+    </tr>
+    <tr>
+     <td>Todd Gurley</td>
+     <td>RB</td>
+     <td>1</td>
+     <td>22.6</td>
+    </tr>
+    <tr>
+     <td>Christian McCaffrey</td>
+     <td>RB</td>
+     <td>1</td>
+     <td>14.8</td>
+    </tr>
+  </table>
+<html>
+"""
 
-print(ffc_response.text)
+html_soup = Soup(table_html)
 
-adp_soup = Soup(ffc_response.text)
+tr_tag = html_soup.find('tr')
+tr_tag
+type(tr_tag)
 
-# adp_soup is a nested tag, so call find_all on it
+table_tag = html_soup.find('table')
+type(table_tag)
 
-tables = adp_soup.find_all('table')
+td_tag = html_soup.find('td')
+td_tag
+type(td_tag)
 
-# find_all always returns a list, even if there's only one element, which is
-# the case here
-len(tables)
+td_tag
+td_tag.string
+str(td_tag.string)
 
-# get the adp table out of it
-adp_table = tables[0]
+tr_tag.find_all('th')
 
-# adp_table another nested tag, so call find_all again
-rows = adp_table.find_all('tr')
+[str(x.string) for x in tr_tag.find_all('th')]
 
-# this is a header row
-rows[0]
+all_td_tags = table_tag.find_all('td')
+all_td_tags
 
-# data rows
-first_data_row = rows[1]
-first_data_row
-
-# get columns from first_data_row
+all_rows = table_tag.find_all('tr')
+first_data_row = all_rows[1]  # 0 is header
 first_data_row.find_all('td')
 
-# comprehension to get raw data out -- each x is simple tag
-[str(x.string) for x in first_data_row.find_all('td')]
+all_td_and_th_tags = table_tag.find_all(('td', 'th'))
+all_td_and_th_tags
 
-# put it in a function
-def parse_row(row):
-    """
-    Take in a tr tag and get the data out of it in the form of a list of
-    strings.
-    """
-    return [str(x.string) for x in row.find_all('td')]
+[str(x.string) for x in all_td_tags]
 
-# call function
-list_of_parsed_rows = [parse_row(row) for row in rows[1:]]
-
-# put it in a dataframe
-df = DataFrame(list_of_parsed_rows)
-df.head()
-
-# clean up formatting
-df.columns = ['ovr', 'pick', 'name', 'pos', 'team', 'adp', 'std_dev',
-              'high', 'low', 'drafted', 'graph']
-
-float_cols =['adp', 'std_dev']
-int_cols =['ovr', 'drafted']
-
-df[float_cols] = df[float_cols].astype(float)
-df[int_cols] = df[int_cols].astype(int)
-
-df.drop('graph', axis=1, inplace=True)
-
-# done
-df.head()
+all_rows = table_tag.find_all('tr')
+list_of_td_lists = [x.find_all('td') for x in all_rows[1:]]
+list_of_td_lists

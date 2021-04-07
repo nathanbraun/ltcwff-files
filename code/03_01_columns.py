@@ -7,16 +7,19 @@ from os import path
 
 DATA_DIR = '/Users/nathan/fantasybook/data'
 
-# load data
+# load player-game data
 pg = pd.read_csv(path.join(DATA_DIR, 'player_game_2017_sample.csv'))
 
+# book picks up here:
+
+# creating and modifying columns
 pg['pts_pr_pass_td'] = 4
 pg[['gameid', 'player_id', 'pts_pr_pass_td']].head()
 
 pg['pts_pr_pass_td'] = 6
 pg[['gameid', 'player_id', 'pts_pr_pass_td']].head()
 
-# Math and number columns
+# math and number columns
 pg['rushing_pts'] = (
     pg['rush_yards']*0.1 + pg['rush_tds']*6 + pg['rush_fumbles']*-3)
 
@@ -28,13 +31,11 @@ pg['distance_traveled'] = np.abs(pg['rush_yards'])
 
 pg['ln_rush_yds'] = np.log(pg['rush_yards'])
 
-# note on sample method
-
 pg['points_per_fg'] = 3
 
 pg[['player_name', 'gameid', 'points_per_fg']].sample(5)
 
-# String Columns
+# string Columns
 pg['player_name'].str.upper().sample(5)
 
 pg['player_name'].str.replace('.', ' ').sample(5)
@@ -43,7 +44,7 @@ pg['player_name'].str.replace('.', ' ').sample(5)
 
 pg['player_name'].str.replace('.', ' ').str.lower().sample(5)
 
-# Bool columns
+# boolean columns
 pg['is_a_rb'] = (pg['pos'] == 'RB')
 pg[['player_name', 'is_a_rb']].sample(5)
 
@@ -63,7 +64,7 @@ def is_skill(pos):
 
 pg['is_skill'] = pg['pos'].apply(is_skill)
 
-pg[['player_name', 'is_skill']].sample(5)
+pg[['player_name', 'pos', 'is_skill']].sample(5)
 
 pg['is_skill_alternate'] = pg['pos'].apply(lambda x: x in ['RB', 'WR', 'TE'])
 
@@ -79,9 +80,10 @@ pg.columns = [x.lower() for x in pg.columns]
 
 pg.rename(columns={'interceptions': 'ints'}, inplace=True)
 
-# Missing data
-pbp = pd.read_csv(path.join(DATA_DIR, 'play_data_sample.csv'))
+# missing data
+pbp = pd.read_csv(path.join(DATA_DIR, 'play_data_sample.csv'))  # not in book
 
+# book picks up again here
 pbp['yards_after_catch'].isnull().head()
 
 pbp['yards_after_catch'].notnull().head()
@@ -109,5 +111,3 @@ pg[['month', 'gameid']].head()
 pg['month'].astype(int).head()
 
 pg.dtypes.head()
-
-

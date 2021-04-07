@@ -5,10 +5,9 @@ from sklearn.model_selection import train_test_split, cross_val_score
 from os import path
 
 DATA_DIR = '/Users/nathan/fantasybook/data'
+DATA_DIR = './data'
 
 df = pd.read_csv(path.join(DATA_DIR, 'player_game_2017_sample.csv'))
-
-train, test = train_test_split(df, test_size=0.20)
 
 xvars = ['carries', 'rush_yards', 'rush_fumbles', 'rush_tds', 'targets',
          'receptions', 'rec_yards', 'raw_yac', 'rec_fumbles', 'rec_tds',
@@ -36,6 +35,8 @@ probs.head()
 results = pd.concat([
     test[['player_id', 'player_name', 'pos', 'pos_hat', 'correct']],
     probs], axis=1)
+
+results[['player_name', 'pos', 'correct', 'QB', 'RB', 'TE', 'WR']].head()
 
 results.groupby('pos')[['correct', 'QB', 'RB', 'WR', 'TE']].mean()
 

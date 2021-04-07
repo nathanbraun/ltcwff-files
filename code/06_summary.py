@@ -7,7 +7,8 @@ from os import path
 # stored
 # on Windows it might be something like 'C:/mydir'
 
-DATA_DIR = '/Users/nathan/fantasybook/data'
+DATA_DIR = '/Users/nathanbraun/fantasymath/fantasybook/data'
+# DATA_DIR = '/Users/nathan/fantasybook/data'
 
 ###############
 # distributions
@@ -16,10 +17,13 @@ DATA_DIR = '/Users/nathan/fantasybook/data'
 df = pd.read_csv(path.join(DATA_DIR, 'player_game_2017_sample.csv'))
 
 # summary stats
-df.loc[df['pos'] == 'RB', 'rush_yards'].quantile(.9)
-df[['rush_yards', 'rec_yards']].describe()
+df.loc[df['pos'] == 'RB', 'rush_yards'].quantile(.95)
 
-# densitiy plots with python
+df.loc[df['pos'] == 'RB', ['rush_yards', 'rec_yards']].describe()
+
+##########
+# plotting
+##########
 
 # add fantasy points to data
 df['std'] = (0.1*(df['rush_yards'] + df['rec_yards']) +
@@ -29,6 +33,8 @@ df['std'] = (0.1*(df['rush_yards'] + df['rec_yards']) +
              6*(df['rush_tds'] + df['rec_tds']) + 4*df['pass_tds'])
 df['ppr'] = df['std'] + 1*df['receptions']
 df['half_ppr'] = df['std'] + 0.5*df['receptions']
+
+df[['player_name', 'week', 'std', 'ppr', 'half_ppr']].head()
 
 # density plot of standard points
 

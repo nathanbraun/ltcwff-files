@@ -1,11 +1,13 @@
-import pandas as pd
 from os import path
+import pandas as pd
 
 # change this to the directory where the csv files that come with the book are
 # stored
 # on Windows it might be something like 'C:/mydir'
 
 DATA_DIR = '/Users/nathan/fantasybook/data'
+
+adp = pd.read_csv(path.join(DATA_DIR, 'adp_2017.csv'))  # adp data
 
 ##############
 # Loading data
@@ -55,8 +57,10 @@ adp.set_index('player_id', inplace=True)
 adp.head()  # now player_id is index
 
 # alternate to using inplace, reassign adp
+# reload adp with default 0, 1, ... index
 adp = pd.read_csv(path.join(DATA_DIR, 'adp_2017.csv'))  # adp data
 adp = adp.set_index('player_id')
+adp.head()  # now player_id is index
 
 adp.reset_index().head()
 
@@ -70,7 +74,7 @@ adp_rbs.sort_values('name', inplace=True)
 adp_rbs.head()
 
 # assigning a new column
-adp_rbs['adp'] = adp['adp']
+adp_rbs['times_drafted'] = adp['times_drafted']
 adp_rbs.head()
 
 # has the same index as adp_rbs and adp['adp']

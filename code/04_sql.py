@@ -10,6 +10,7 @@ import sqlite3
 
 # handle directories
 DATA_DIR = '/Users/nathan/fantasybook/data'
+DATA_DIR =  './data/'
 
 # create connection
 conn = sqlite3.connect(path.join(DATA_DIR, 'fantasy.sqlite'))
@@ -251,3 +252,14 @@ df = pd.read_sql(
     LEFT JOIN player_game AS b ON a.gameid = b.gameid AND a.player_id = b.player_id
     """, conn)
 df.loc[df['player_name'] == 'M.Sanu']
+
+game = pd.read_sql(
+    """
+    SELECT *
+    FROM game
+    """
+    , conn)
+
+game.loc[[11, 0, 1, 2, 3]]
+
+game.query("home == 'GB'")

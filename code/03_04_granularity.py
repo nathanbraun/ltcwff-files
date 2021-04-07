@@ -1,5 +1,4 @@
 import pandas as pd
-import numpy as np
 from os import path
 
 # change this to the directory where the csv files that come with the book are
@@ -27,10 +26,11 @@ pbp.groupby('game_id').agg(
     interception = ('interception', 'sum'),
     touchdown = ('touchdown', 'sum'))
 
-pbp.groupby('game_id').agg({'yards_gained': ['sum', 'mean']})
-
-yards_per_team_game = pbp.groupby(
-         ['game_id', 'posteam']).agg({'yards_gained': ['sum', 'mean']})
+yards_per_team_game = (pbp
+                       .groupby(['game_id', 'posteam'])
+                       .agg(
+                           ave_yards_per_play = ('yards_gained', 'mean'),
+                           total_yards = ('yards_gained', 'sum')))
 
 yards_per_team_game
 
@@ -48,4 +48,7 @@ qbs_reshaped.head()
 
 total_tds = qbs_reshaped.sum(axis=1).head()
 
-qbs_reshaped.stack().head()
+qbs_reshaped.max(axis=0).head()  # note: axis=0 not nec since it's the default
+
+qbs_reshaped_undo = qbs_reshaped.stack()
+qbs_reshaped_undo.head()

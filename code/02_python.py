@@ -1,6 +1,6 @@
 ##############
 # basic python
-# v0.0.3
+# v0.0.7
 ##############
 
 ##########################
@@ -58,6 +58,9 @@ team_name
 '  tom brady'
 'tom brady'
 
+#######
+# bools
+#######
 team1_pts = 110
 team2_pts = 120
 
@@ -161,9 +164,17 @@ type([x.title() for x in my_roster_list])
 my_roster_last_names = [full_name.split(' ')[1] for full_name in my_roster_list]
 my_roster_last_names
 
+full_name = 'tom brady'
+full_name.split(' ')
+full_name.split(' ')[1]
+
 my_roster_a_only = [
-    x.title() for x in my_roster_list if x.startswith('a')]
+    x for x in my_roster_list if x.startswith('a')]
 my_roster_a_only
+
+my_roster_a_only_title = [
+    x.title() for x in my_roster_list if x.startswith('a')]
+my_roster_a_only_title
 
 # dicts
 pts_per_player = {
@@ -183,46 +194,87 @@ sum([pts for _, pts in pts_per_player.items()])
 ###########
 len(['tom brady', 'adrian peterson', 'antonio brown'])
 
-def over_100_total_yds(rush_yds, rec_yds):
+def rec_pts(rec, yds, tds):
     """
     multi line strings in python are between three double quotes
 
-    it's not required, but the convention is to put what the fn does in one of
-    these multi line strings (called "docstring") right away in function
+    it's not required, but the convention is to put what the fn does in one of these multi line strings (called "docstring") right away in function
 
-    when you type over_100_total_yds? in the REPL, it shows this docstring
-
-    this function takes rushing, receiving yards, adds them, and returns a bool
-    indicating whether they're more than 100 or not
+    this function takes number of recieving: yards, receptions and touchdowns and returns fantasy points scored (ppr scoring)
     """
-    return rush_yds + rec_yds > 100
+    return yds*0.1 + rec*1 + tds*6
 
-# print(rush_yds)  # commented out since it shows an error
+rec_pts(6, 110, 0)
 
-def noisy_over_100_total_yds(rush_yds, rec_yds):
+# this gives an error: yds is only defined inside rec_pts
+# print(`yds`)
+
+def rec_pts_noisy(rec, yds, tds):
     """
-    this function takes rushing, recieving yards, adds them, and returns a bool
-    indicating whether they're more than 100 or not
+    this function takes number of recieving: yards, receptions and touchdowns and returns fantasy points scored (ppr scoring)
 
-    it also prints rush_yds
+    it also prints out yds
     """
-    print(rush_yds)
-    return rush_yds + rec_yds > 100
+    print(yds)  # works here since we're inside fn
+    return yds*0.1 + rec*1 + tds*6
 
-over_100_total_yds(60, 39)
-noisy_over_100_total_yds(84, 32)
+rec_pts_noisy(6, 110, 0)
 
-def over_100_total_yds_wdefault(rush_yds=0, rec_yds=0):
+# side effects
+def is_player_on_team(player, team):
     """
-    this function takes rushing, receiving yards, adds them, and returns a bool
-    indicating whether they're more than 100 or not
+    take a player string and team list and check whether the player is on team
 
-    if a value for rushing or receiving yards is not entered, it'll default to 0
+    do this by adding the player to the team, then returning True if the player shows up 2 or more times
     """
-    return rush_yds + rec_yds > 100
+    team.append(player)
+    return team.count(player) >= 2
 
-over_100_total_yds_wdefault(92)
-over_100_total_yds(92)
+my_roster_list = ['tom brady', 'adrian peterson', 'antonio brown']
+is_player_on_team('gronk', my_roster_list)
+
+my_roster_list
+is_player_on_team('gronk', my_roster_list)
+
+my_roster_list
+
+#############################
+# default values in functions
+#############################
+
+# error: leaving off a function
+# rec_pts(4, 54)
+
+def rec_pts_wdefault(rec=0, yds=0, tds=0):
+    """
+    this function takes number of recieving: yards, receptions and touchdowns
+    and returns fantasy points scored (ppr scoring)
+    """
+    return yds*0.1 + rec*1 + tds*6
+
+rec_pts_wdefault(4, 54)
+rec_pts_wdefault()
+
+def rec_pts2(rec=0, yds=0, tds=0, ppr=1):
+    """
+    takes number of receiving: yards, receptions and touchdowns AND points per
+    reception and returns fantasy points scored
+    """
+    return yds*0.1 + rec*ppr + tds*6
+
+rec_pts2(4, 54, 0.5)  # not doing what we want
+
+54*0.1 + 4*1 + 0.5*6
+
+rec_pts2(4, 54, 0, 0.5)  # solution 1
+rec_pts2(4, 54, ppr=0.5)  # solution 2
+
+# error: can't put key word argument before positional
+# rec_pts2(ppr=0.5, 4, 54)
+
+#####################################
+# functions that take other functions
+#####################################
 
 def do_to_list(working_list, working_fn, desc):
     """
@@ -262,3 +314,4 @@ from os import path
 # change this to the location of your data
 DATA_DIR = '/Users/nathan/fantasybook/data'
 path.join(DATA_DIR, 'adp_2017.csv')
+os.path.join(DATA_DIR, 'adp_2017.csv')  # alt if we didn't want to import path

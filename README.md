@@ -4,8 +4,7 @@ Football](https://fantasycoding.com).
 
 If you're not familiar with Git or GitHub, no problem. Just click the `Source
 code` link under the latest release to download the files.  This will download
-a file called `ltcwff-files-vX.X.X.zip`, where X.X.X is the latest version
-number (v0.7.0 in the screenshot above).
+a file called `ltcwff-files-vX.X.X.zip`, where X.X.X is the latest version.
 
 When you unzip these (note in the book I've dropped the version number and
 renamed the directory just `ltcwff-files`, which you can do too) you'll see

@@ -22,5 +22,24 @@ If I were using Windows, it might look like this:
 Set these aside for now and we'll pick them up in chapter 2.
 
 ## Changelog
+### v0.9.0 (2021-06-16)
+Updated visualization section + associated homework problems to use Seaborn
+0.11.x (September 2020), which added a new `displot` function. This means
+making our distribution plots change from, say:
+
+```python
+g = (sns.FacetGrid(df)
+     .map(sns.kdeplot, 'std', shade=True))
+```
+
+To:
+
+```python
+g = sns.displot(df, x='std', kind='kde', fill=True)
+```
+
+It also opens up some new possibilities (e.g. with plotting empirical CDFs)
+that I might discuss in a future update.
+
 ### v0.8.0
 Add this changelog, bundle files in an github release vs including with SendOwl.

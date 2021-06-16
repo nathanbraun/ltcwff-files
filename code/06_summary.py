@@ -7,8 +7,7 @@ from os import path
 # stored
 # on Windows it might be something like 'C:/mydir'
 
-DATA_DIR = '/Users/nathanbraun/fantasymath/fantasybook/data'
-# DATA_DIR = '/Users/nathan/fantasybook/data'
+DATA_DIR = '/Users/nathan/fantasybook/data'
 
 ###############
 # distributions
@@ -37,23 +36,15 @@ df['half_ppr'] = df['std'] + 0.5*df['receptions']
 df[['player_name', 'week', 'std', 'ppr', 'half_ppr']].head()
 
 # density plot of standard points
-
-# all on one line
-g = sns.FacetGrid(df).map(sns.kdeplot, 'std', shade=True)
-
-# on seperate lines so it's clearer it's a two step process
-g = (sns.FacetGrid(df)
-     .map(sns.kdeplot, 'std', shade=True))
+g = sns.displot(df, x='std', kind='kde', fill=True)
 
 # density plot of standard points by position
-g = (sns.FacetGrid(df, hue='pos')
-     .map(sns.kdeplot, 'std', shade=True)
-     .add_legend())
+g = sns.displot(df, x='std', kind='kde', fill=True, hue='pos')
+
 
 # density plot of standard points by position and week
-g = (sns.FacetGrid(df, hue='pos', col='week', col_wrap=4, height=2)
-     .map(sns.kdeplot, 'std', shade=True)
-     .add_legend())
+g = sns.displot(df, x='std', kind='kde', fill=True, hue='pos', col='week',
+                col_wrap=4, height=2)
 
 # now want it by scoring system
 
@@ -73,14 +64,27 @@ df_pts_long = pd.concat(
     [score_type_df(df, scoring) for scoring in ['std', 'ppr', 'half_ppr']])
 
 # now can plot points by scoring system and position
-g = (sns.FacetGrid(df_pts_long, col='pos', hue='scoring', col_wrap=2,
-                   aspect=1.3)
-     .map(sns.kdeplot, 'pts', shade=True)
+g = sns.displot(df_pts_long,  x='pts', col='pos', hue='scoring', kind='kde',
+                fill=True, col_wrap=2, aspect=1.3)
+
+# ecdf
+g = (sns.displot(df_pts_long,  x='pts', col='pos', hue='scoring', kind='ecdf',
+                 col_wrap=2, aspect=1.3)
      .add_legend())
+plt.show()
+
 
 #################################
 # relationships between variables
 #################################
+
+
+# airyards vs yac
+g = sns.displot(x='caught_airyards', y='raw_yac', data=df, kind='kde')
+plt.show()
+
+g.fig.subplots_adjust(top=0.9)
+g.fig.suptitle('Airyards vs YAC')
 
 # airyards vs yac
 g = sns.relplot(x='caught_airyards', y='raw_yac', data=df)
@@ -133,15 +137,22 @@ g.fig.suptitle("Points by Week = QBs")
 ##############
 
 # basic plot
-g = (sns.FacetGrid(df_pts_long, col='pos', hue='scoring')
-     .map(sns.kdeplot, 'pts', shade=True))
+g = sns.displot(df_pts_long,  x='pts', col='pos', hue='scoring', kind='kde',
+                fill=True)
 
 # wrapping columns
-g = (sns.FacetGrid(df_pts_long, col='pos', hue='scoring', col_wrap=2)
-     .map(sns.kdeplot, 'pts', shade=True)
-     .fig.subplots_adjust(top=0.9) # adding a title
-     .fig.suptitle('Fantasy Points by Position, Scoring System')
-     .set_xlabels('Points') # modifying axis
-     .set_ylabels('Density')
-     .add_legend()  # adding legend
-     .savefig('scoring_by_pos_type.png'))  # saving
+g = sns.displot(df_pts_long,  x='pts', col='pos', hue='scoring', kind='kde',
+                fill=True, col_wrap=2)
+
+# adding a title
+g.fig.subplots_adjust(top=0.9) # adding a title
+g.fig.suptitle('Fantasy Points by Position, Scoring System')
+
+# modifying axis
+g.set(xlim=(-10, 40), ylim=(0, 0.014))
+
+g.set_xlabels('Points') # modifying axis
+g.set_ylabels('Density')
+
+# saving
+g.savefig('scoring_by_pos_type.png')  # saving

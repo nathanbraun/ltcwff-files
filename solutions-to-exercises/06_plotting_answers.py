@@ -11,57 +11,54 @@ from os import path
 # stored
 # on Windows it might be something like 'C:/mydir'
 
-DATA_DIR = '/Users/nathan/fantasybook/data'
+# DATA_DIR = '/Users/nathan/fantasybook/data'
+DATA_DIR = '/Users/nathanbraun/fantasymath/ltcwff-files/data'
 
 pbp = pd.read_csv(path.join(DATA_DIR, 'play_data_sample.csv'))  # play by play data
 
 ###############################################################################
 # 6.1a
 ###############################################################################
-g = (sns.FacetGrid(pbp)
-     .map(sns.kdeplot, 'yards_gained', shade=True))
+g = sns.displot(pbp, x='yards_gained', kind='kde', fill=True)
 g.fig.subplots_adjust(top=0.9)
 g.fig.suptitle('Distribution of Yards Gained Per Play, LTCWFF Sample')
-g.savefig('./answers-to-exercises/6-1a.png')
+g.savefig('./solutions-to-exercises/6-1a.png')
 
 ###############################################################################
 # 6.1b
 ###############################################################################
-g = (sns.FacetGrid(pbp.query("down <= 3"), hue='down')
-     .map(sns.kdeplot, 'yards_gained', shade=True))
-g.add_legend()
+g = sns.displot(pbp.query("down <= 3"), x='yards_gained', kind='kde',
+                hue='down', fill=True)
 g.fig.subplots_adjust(top=0.9)
 g.fig.suptitle('Distribution of Yards Gained Per Play by Down, LTCWFF Sample')
-g.savefig('./answers-to-exercises/6-1b.png')
+g.savefig('./solutions-to-exercises/6-1b.png')
 
 ###############################################################################
 # 6.1c
 ###############################################################################
-g = (sns.FacetGrid(pbp.query("down <= 3"), col='down')
-     .map(sns.kdeplot, 'yards_gained', shade=True))
+g = sns.displot(pbp.query("down <= 3"), x='yards_gained', kind='kde',
+                col='down', fill=True)
 g.fig.subplots_adjust(top=0.8)
 g.fig.suptitle('Distribution of Yards Gained Per Play by Down, LTCWFF Sample')
-g.savefig('./answers-to-exercises/6-1c.png')
+g.savefig('./solutions-to-exercises/6-1c.png')
 
 ###############################################################################
 # 6.1d
 ###############################################################################
-g = (sns.FacetGrid(pbp.query("down <= 3"), col='down', row='posteam')
-     .map(sns.kdeplot, 'yards_gained', shade=True))
+g = sns.displot(pbp.query("down <= 3"), x='yards_gained', kind='kde',
+                row='posteam', col='down', fill=True)
 g.fig.subplots_adjust(top=0.9)
 g.fig.suptitle('Distribution of Yards Gained Per Play by Down, Team, LTCWFF Sample')
-g.savefig('./answers-to-exercises/6-1d.png')
+g.savefig('./solutions-to-exercises/6-1d.png')
 
 ###############################################################################
 # 6.1e
 ###############################################################################
-g = (sns.FacetGrid(pbp.query("down <= 3"), col='down', row='posteam',
-                   hue='posteam')
-     .map(sns.kdeplot, 'yards_gained', shade=True))
+g = sns.displot(pbp.query("down <= 3"), x='yards_gained', col='down',
+                row='posteam', hue='posteam', fill=True)
 g.fig.subplots_adjust(top=0.9)
 g.fig.suptitle('Distribution of Yards Gained Per Play by Down, Team, LTCWFF Sample')
-g.savefig('./answers-to-exercises/6-1e.png')
-
+g.savefig('./solutions-to-exercises/6-1e.png')
 
 ###############################################################################
 # 6.2

@@ -2,7 +2,6 @@ import random
 from pandas import DataFrame
 import statsmodels.formula.api as smf
 
-
 coin = ['H', 'T']
 
 # make empty DataFrame

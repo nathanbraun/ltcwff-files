@@ -22,6 +22,12 @@ If I were using Windows, it might look like this:
 Set these aside for now and we'll pick them up in chapter 2.
 
 ## Changelog
+### v0.10.1 (2021-09-19)
+Fixed the solution for exercise 5.1 so it's no longer cut off (thanks Graydon!)
+
+### v0.10.0 (2021-09-19)
+Misc edits and Anki card updates.
+
 ### v0.9.1 (2021-06-16)
 Added a note explaning *granularity* in the main text, before asking any end of
 chapter exercises on it (thanks Jay!)

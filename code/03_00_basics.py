@@ -7,8 +7,6 @@ import pandas as pd
 
 DATA_DIR = '/Users/nathan/fantasybook/data'
 
-adp = pd.read_csv(path.join(DATA_DIR, 'adp_2017.csv'))  # adp data
-
 ##############
 # Loading data
 ##############
@@ -41,7 +39,8 @@ adp[['name', 'position', 'adp']].head()
 
 type(adp[['name', 'position', 'adp']])
 
-# adp['name', 'position', 'adp'].head()  # commented out because it throws an error
+# commented out because it throws an error
+# adp['name', 'position', 'adp'].head()  
 
 ##########
 # Indexing

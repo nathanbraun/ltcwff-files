@@ -111,6 +111,7 @@ my_roster_dict = {'qb': 'tom brady',
 
 my_roster_dict['qb']
 my_roster_dict['k'] = 'mason crosby'
+my_roster_dict
 
 # unpacking
 qb, rb = ['tom brady', 'todd gurley']
@@ -172,6 +173,10 @@ my_roster_a_only = [
     x for x in my_roster_list if x.startswith('a')]
 my_roster_a_only
 
+'tom brady'.startswith('a')
+'adrian peterson'.startswith('a')
+'antonio brown'.startswith('a')
+
 my_roster_a_only_title = [
     x.title() for x in my_roster_list if x.startswith('a')]
 my_roster_a_only_title
@@ -220,24 +225,6 @@ def rec_pts_noisy(rec, yds, tds):
 
 rec_pts_noisy(6, 110, 0)
 
-# side effects
-def is_player_on_team(player, team):
-    """
-    take a player string and team list and check whether the player is on team
-
-    do this by adding the player to the team, then returning True if the player shows up 2 or more times
-    """
-    team.append(player)
-    return team.count(player) >= 2
-
-my_roster_list = ['tom brady', 'adrian peterson', 'antonio brown']
-is_player_on_team('gronk', my_roster_list)
-
-my_roster_list
-is_player_on_team('gronk', my_roster_list)
-
-my_roster_list
-
 #############################
 # default values in functions
 #############################
@@ -245,7 +232,7 @@ my_roster_list
 # error: leaving off a function
 # rec_pts(4, 54)
 
-def rec_pts_wdefault(rec=0, yds=0, tds=0):
+def rec_pts_wdefault(rec, yds, tds=0):
     """
     this function takes number of recieving: yards, receptions and touchdowns
     and returns fantasy points scored (ppr scoring)
@@ -253,24 +240,13 @@ def rec_pts_wdefault(rec=0, yds=0, tds=0):
     return yds*0.1 + rec*1 + tds*6
 
 rec_pts_wdefault(4, 54)
-rec_pts_wdefault()
 
-def rec_pts2(rec=0, yds=0, tds=0, ppr=1):
-    """
-    takes number of receiving: yards, receptions and touchdowns AND points per
-    reception and returns fantasy points scored
-    """
-    return yds*0.1 + rec*ppr + tds*6
+# error: leaving off required variable yds
+# rec_pts_wdefault(4)
 
-rec_pts2(4, 54, 0.5)  # not doing what we want
-
-54*0.1 + 4*1 + 0.5*6
-
-rec_pts2(4, 54, 0, 0.5)  # solution 1
-rec_pts2(4, 54, ppr=0.5)  # solution 2
-
-# error: can't put key word argument before positional
-# rec_pts2(ppr=0.5, 4, 54)
+rec_pts(6, 110, 1)
+rec_pts(yds=100, rec=4, tds=2)
+rec_pts(4, yds=100, tds=2)
 
 #####################################
 # functions that take other functions

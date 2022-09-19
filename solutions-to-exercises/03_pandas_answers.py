@@ -64,7 +64,7 @@ adp.to_csv(path.join(DATA_DIR, 'adp.txt'), sep='|')
 import pandas as pd
 from os import path
 
-DATA_DIR = '/Users/nathan/fantasybook/data'
+DATA_DIR = './data'
 pg = pd.read_csv(path.join(DATA_DIR, 'player_game_2017_sample.csv'))
 
 #######

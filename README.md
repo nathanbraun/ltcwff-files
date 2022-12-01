@@ -22,6 +22,9 @@ If I were using Windows, it might look like this:
 Set these aside for now and we'll pick them up in chapter 2.
 
 ## Changelog
+### v0.10.2 (2022-12-01)
+Cleaned up a few minor typos.
+
 ### v0.10.1 (2021-09-19)
 Fixed the solution for exercise 5.1 so it's no longer cut off (thanks Graydon!)
 

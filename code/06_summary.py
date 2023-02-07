@@ -7,7 +7,7 @@ from os import path
 # stored
 # on Windows it might be something like 'C:/mydir'
 
-DATA_DIR = '/Users/nathan/fantasybook/data'
+DATA_DIR = './data'
 
 ###############
 # distributions
@@ -61,7 +61,8 @@ def score_type_df(_df, scoring):
     return _df
 
 df_pts_long = pd.concat(
-    [score_type_df(df, scoring) for scoring in ['std', 'ppr', 'half_ppr']])
+    [score_type_df(df, scoring) for scoring in ['std', 'ppr', 'half_ppr']],
+    ignore_index=True)
 
 # now can plot points by scoring system and position
 g = sns.displot(df_pts_long,  x='pts', col='pos', hue='scoring', kind='kde',

@@ -22,6 +22,9 @@ If I were using Windows, it might look like this:
 Set these aside for now and we'll pick them up in chapter 2.
 
 ## Changelog
+### v0.10.3 (2023-02-07)
+Added a missing ignore_index in the visualization chapter (thanks Chad!)
+
 ### v0.10.2 (2022-12-01)
 Cleaned up a few minor typos.
 

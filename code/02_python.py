@@ -209,7 +209,7 @@ def rec_pts(rec, yds, tds):
     """
     return yds*0.1 + rec*1 + tds*6
 
-rec_pts(6, 110, 0)
+rec_pts(110, 6, 0)
 
 # this gives an error: yds is only defined inside rec_pts
 # print(`yds`)

@@ -125,19 +125,31 @@ def ffc_player_info(url):
 
     list_of_parsed_rows = [_parse_row(row) for row in rows]
 
-    # this is a list of two item lists [[key1, value1], [key2, value2], ...],
-    # so we're unpacking each key, value pair with for key, value in ...
-    dict_of_parsed_rows = {key: value for key, value in list_of_parsed_rows}
+    
+    # list_of_parsed_rows looks like this:
 
-    # now modify slightly to return what we want, which (per problem
-    # instructions) is team, height, weight, birthday, and draft info
+    # [['38'],
+    #  ['March 21, 1985'],
+    #  ['6\'1"'],
+    #  ['217 lb'],
+    #  ['Oklahoma'],
+    #  ['\n          2007\n        ', '\n'],
+    #  ['\n          Round: 1, Overall: 7\n        '],
+    #  ['MIN'],
+    #  [],
+    #  [],
+    # ...
+
+    # looks like what we want (height, weight, birthday, draft info) is in spots
+    # 1, 2, 3, 4, 5, 6, 7
+
     return_dict = {}
-    return_dict['team'] = dict_of_parsed_rows['Team:']
-    return_dict['height'] = dict_of_parsed_rows['Ht / Wt:'].split('/')[0]
-    return_dict['weight'] = dict_of_parsed_rows['Ht / Wt:'].split('/')[1]
-    return_dict['birthday'] = dict_of_parsed_rows['Born:']
-    return_dict['drafted'] = dict_of_parsed_rows['Drafted:']
-    return_dict['draft_team'] = dict_of_parsed_rows['Draft Team:']
+    return_dict['height'] = list_of_parsed_rows[2][0]
+    return_dict['weight'] = list_of_parsed_rows[3][0]
+    return_dict['birthday'] = list_of_parsed_rows[1][0]
+    return_dict['drafted_year'] = list_of_parsed_rows[5][0]
+    return_dict['drafted_pick'] = list_of_parsed_rows[6][0]
+    return_dict['drafted_team'] = list_of_parsed_rows[7][0]
 
     return return_dict
 

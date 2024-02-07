@@ -22,6 +22,9 @@ If I were using Windows, it might look like this:
 Set these aside for now and we'll pick them up in chapter 2.
 
 ## Changelog
+### v0.10.9 (2024-02-07)
+Misc typos.
+
 ### v0.10.8 (2024-01-14)
 Fixed issue #2 (updated exercise 5.1.3 to reflect updated FFC data format).
 Thanks Damon!

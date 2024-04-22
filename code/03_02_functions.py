@@ -5,14 +5,14 @@ from os import path
 # stored
 # on Windows it might be something like 'C:/mydir'
 
-DATA_DIR = '/Users/nathan/fantasybook/data'
+DATA_DIR = './data'
 
 # load adp data
 adp = pd.read_csv(path.join(DATA_DIR, 'adp_2017.csv'))  # adp data
 
 # book picks up here:
 
-adp.mean()
+adp[['adp', 'high', 'low', 'stdev', 'times_drafted']].mean()
 adp.max()
 
 # Axis

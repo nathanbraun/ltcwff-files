@@ -55,7 +55,7 @@ g = sns.displot(df, x='std', kind='kde', fill=True, hue='pos', col='week',
 df[['pos', 'std', 'ppr', 'half_ppr']].head()  # have this
 
 def score_type_df(_df, scoring):
-    _df = _df[['pos', scoring]]
+    _df = _df[['pos', scoring]].copy()
     _df.columns = ['pos', 'pts']
     _df['scoring'] = scoring
     return _df
@@ -84,18 +84,18 @@ plt.show()
 g = sns.displot(x='caught_airyards', y='raw_yac', data=df, kind='kde')
 plt.show()
 
-g.fig.subplots_adjust(top=0.9)
-g.fig.suptitle('Airyards vs YAC')
+g.figure.subplots_adjust(top=0.9)
+g.figure.suptitle('Airyards vs YAC')
 
 # airyards vs yac
 g = sns.relplot(x='caught_airyards', y='raw_yac', data=df)
-g.fig.subplots_adjust(top=0.9)
-g.fig.suptitle('Airyards vs YAC')
+g.figure.subplots_adjust(top=0.9)
+g.figure.suptitle('Airyards vs YAC')
 
 # airyards vs yac - colored yb position
 g = sns.relplot(x='caught_airyards', y='raw_yac', hue='pos', data=df)
-g.fig.subplots_adjust(top=0.9)
-g.fig.suptitle('Airyards vs YAC - by Position')
+g.figure.subplots_adjust(top=0.9)
+g.figure.suptitle('Airyards vs YAC - by Position')
 
 # correlation
 df.loc[df['pos'] == 'WR',
@@ -123,15 +123,15 @@ max_pts_by_pos_week = (df.groupby(['pos', 'week'], as_index=False)
 
 g = sns.relplot(x='week', y='std', kind='line', hue='pos', style='pos',
                 data=max_pts_by_pos_week, height=4, aspect=1.2)
-g.fig.subplots_adjust(top=0.9)
-g.fig.suptitle("Max Points by Week and Position")
+g.figure.subplots_adjust(top=0.9)
+g.figure.suptitle("Max Points by Week and Position")
 
 # points by player and week
 g = sns.relplot(x='week', y='std', kind='line', hue='player_name',
                 col='player_name', height=2, aspect=1.2, col_wrap=3,
                 legend=False, data=df.query("pos == 'QB'"))
-g.fig.subplots_adjust(top=0.9)
-g.fig.suptitle("Points by Week = QBs")
+g.figure.subplots_adjust(top=0.9)
+g.figure.suptitle("Points by Week = QBs")
 
 ##############
 # plot options
@@ -146,8 +146,8 @@ g = sns.displot(df_pts_long,  x='pts', col='pos', hue='scoring', kind='kde',
                 fill=True, col_wrap=2)
 
 # adding a title
-g.fig.subplots_adjust(top=0.9) # adding a title
-g.fig.suptitle('Fantasy Points by Position, Scoring System')
+g.figure.subplots_adjust(top=0.9) # adding a title
+g.figure.suptitle('Fantasy Points by Position, Scoring System')
 
 # modifying axis
 g.set(xlim=(-10, 40), ylim=(0, 0.014))

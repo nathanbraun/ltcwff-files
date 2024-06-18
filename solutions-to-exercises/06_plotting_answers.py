@@ -20,8 +20,8 @@ pbp = pd.read_csv(path.join(DATA_DIR, 'play_data_sample.csv'))  # play by play d
 # 6.1a
 ###############################################################################
 g = sns.displot(pbp, x='yards_gained', kind='kde', fill=True)
-g.fig.subplots_adjust(top=0.9)
-g.fig.suptitle('Distribution of Yards Gained Per Play, LTCWFF Sample')
+g.figure.subplots_adjust(top=0.9)
+g.figure.suptitle('Distribution of Yards Gained Per Play, LTCWFF Sample')
 g.savefig('./solutions-to-exercises/6-1a.png')
 
 ###############################################################################
@@ -29,8 +29,8 @@ g.savefig('./solutions-to-exercises/6-1a.png')
 ###############################################################################
 g = sns.displot(pbp.query("down <= 3"), x='yards_gained', kind='kde',
                 hue='down', fill=True)
-g.fig.subplots_adjust(top=0.9)
-g.fig.suptitle('Distribution of Yards Gained Per Play by Down, LTCWFF Sample')
+g.figure.subplots_adjust(top=0.9)
+g.figure.suptitle('Distribution of Yards Gained Per Play by Down, LTCWFF Sample')
 g.savefig('./solutions-to-exercises/6-1b.png')
 
 ###############################################################################
@@ -38,8 +38,8 @@ g.savefig('./solutions-to-exercises/6-1b.png')
 ###############################################################################
 g = sns.displot(pbp.query("down <= 3"), x='yards_gained', kind='kde',
                 col='down', fill=True)
-g.fig.subplots_adjust(top=0.8)
-g.fig.suptitle('Distribution of Yards Gained Per Play by Down, LTCWFF Sample')
+g.figure.subplots_adjust(top=0.8)
+g.figure.suptitle('Distribution of Yards Gained Per Play by Down, LTCWFF Sample')
 g.savefig('./solutions-to-exercises/6-1c.png')
 
 ###############################################################################
@@ -47,8 +47,8 @@ g.savefig('./solutions-to-exercises/6-1c.png')
 ###############################################################################
 g = sns.displot(pbp.query("down <= 3"), x='yards_gained', kind='kde',
                 row='posteam', col='down', fill=True)
-g.fig.subplots_adjust(top=0.9)
-g.fig.suptitle('Distribution of Yards Gained Per Play by Down, Team, LTCWFF Sample')
+g.figure.subplots_adjust(top=0.9)
+g.figure.suptitle('Distribution of Yards Gained Per Play by Down, Team, LTCWFF Sample')
 g.savefig('./solutions-to-exercises/6-1d.png')
 
 ###############################################################################
@@ -56,8 +56,8 @@ g.savefig('./solutions-to-exercises/6-1d.png')
 ###############################################################################
 g = sns.displot(pbp.query("down <= 3"), x='yards_gained', col='down',
                 row='posteam', hue='posteam', fill=True)
-g.fig.subplots_adjust(top=0.9)
-g.fig.suptitle('Distribution of Yards Gained Per Play by Down, Team, LTCWFF Sample')
+g.figure.subplots_adjust(top=0.9)
+g.figure.suptitle('Distribution of Yards Gained Per Play by Down, Team, LTCWFF Sample')
 g.savefig('./solutions-to-exercises/6-1e.png')
 
 ###############################################################################
@@ -66,8 +66,8 @@ g.savefig('./solutions-to-exercises/6-1e.png')
 # relationships
 pg = pd.read_csv(path.join(DATA_DIR, 'player_game_2017_sample.csv'))
 g = sns.relplot(x='carries', y='rush_yards', hue='pos', data=pg)
-g.fig.subplots_adjust(top=0.9)
-g.fig.suptitle('Carries vs Rush Yards by Position, LTCWFF Sample')
+g.figure.subplots_adjust(top=0.9)
+g.figure.suptitle('Carries vs Rush Yards by Position, LTCWFF Sample')
 g.savefig('./answers-to-exercises/6-2.png')
 
 pg['ypc'] = pg['rush_yards']/pg['carries']

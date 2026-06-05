@@ -1,4 +1,13 @@
-# README
+# Learn to Code with Fantasy Football — files
+
+> [!NOTE]
+> ## This book is now free!
+> *Learn to Code with Fantasy Football* is no longer for sale. **[Download the full PDF here](https://github.com/nathanbraun/ltcwff-files/releases/download/book/learn-to-code-with-fantasy-football.pdf)** — free.
+>
+> The code you work through in the book is still in this repo (see below for how to grab it).
+>
+> Learning to code today? My newer, AI-era book is at **[techtoolsbook.com](https://techtoolsbook.com)**.
+
 These are the files for the book [Learn to Code with Fantasy
 Football](https://fantasycoding.com).
 
